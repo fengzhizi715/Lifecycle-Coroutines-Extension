@@ -1,6 +1,10 @@
 package com.safframework.lifecycle
 
-import android.arch.lifecycle.*
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.LifecycleOwner
+import android.arch.lifecycle.OnLifecycleEvent
+import android.util.Log
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -50,11 +54,11 @@ fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
 
 fun <T> GlobalScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
                                          block: CoroutineScope.() -> Deferred<T>): Deferred<T> {
-    val job = block.invoke(this)
+    val deferred = block.invoke(this)
 
-    lifecycleOwner.lifecycle.addObserver(LifecycleCoroutineListener(job))
+    lifecycleOwner.lifecycle.addObserver(LifecycleCoroutineListener(deferred))
 
-    return job
+    return deferred
 }
 
 infix fun <T> Deferred<T>.then(block: (T) -> Unit): Job {
@@ -62,5 +66,33 @@ infix fun <T> Deferred<T>.then(block: (T) -> Unit): Job {
     return GlobalScope.launch(context = Dispatchers.Main) {
 
         block(this@then.await())
+    }
+}
+
+infix fun <T, R> Deferred<T>.then(block: (T) -> R): Deferred<R> {
+
+    return GlobalScope.async(context = Dispatchers.Main) {
+
+        block(this@then.await())
+    }
+}
+
+suspend fun <T> Deferred<T>.awaitOrNull(timeout: Long = 0L): T? {
+    return try {
+        if (timeout > 0) {
+
+            withTimeout(timeout) {
+
+                this@awaitOrNull.await()
+            }
+
+        } else {
+
+            this.await()
+        }
+    } catch (e: Exception) {
+
+        Log.e("Deferred", e.message)
+        null
     }
 }
