@@ -22,5 +22,22 @@
         android:gravity="center"
         android:text="bindWithLifecycle()的使用"/>
 
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:text="then()的使用"/>
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:text="thenAsync()的使用"/>
 
 </LinearLayout>

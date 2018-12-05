@@ -70,11 +70,11 @@ infix fun <T> Deferred<T>.then(block: (T) -> Unit): Job {
     }
 }
 
-infix fun <T, R> Deferred<T>.then(block: (T) -> R): Deferred<R> {
+infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R): Deferred<R> {
 
     return GlobalScope.async(context = Dispatchers.Main) {
 
-        block(this@then.await())
+        block(this@thenAsync.await())
     }
 }
 

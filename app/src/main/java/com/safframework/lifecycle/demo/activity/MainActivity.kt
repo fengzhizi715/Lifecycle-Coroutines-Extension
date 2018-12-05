@@ -32,5 +32,17 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this,Demo4BindActivity::class.java)
             startActivity(i)
         }
+
+        text3.setOnClickListener {
+
+            val i = Intent(this,Demo4ThenActivity::class.java)
+            startActivity(i)
+        }
+
+        text4.setOnClickListener {
+
+            val i = Intent(this,Demo4ThenAsyncActivity::class.java)
+            startActivity(i)
+        }
     }
 }
