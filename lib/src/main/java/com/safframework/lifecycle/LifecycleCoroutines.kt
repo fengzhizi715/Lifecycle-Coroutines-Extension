@@ -53,7 +53,8 @@ fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
 }
 
 fun <T> GlobalScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
-                                         block: CoroutineScope.() -> Deferred<T>): Deferred<T> {
+                                      block: CoroutineScope.() -> Deferred<T>): Deferred<T> {
+
     val deferred = block.invoke(this)
 
     lifecycleOwner.lifecycle.addObserver(LifecycleCoroutineListener(deferred))
