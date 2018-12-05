@@ -40,4 +40,13 @@
         android:gravity="center"
         android:text="thenAsync()的使用"/>
 
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:text="awaitOrNull()的使用"/>
+
 </LinearLayout>
