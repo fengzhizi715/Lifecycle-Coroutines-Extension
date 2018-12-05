@@ -17,7 +17,7 @@ import kotlin.coroutines.EmptyCoroutineContext
  * @date: 2018-12-05 14:02
  * @version: V1.0 <描述当前版本功能>
  */
-class LifecycleCoroutineListener(private val job: Job,
+open class LifecycleCoroutineListener(private val job: Job,
                                  private val cancelEvent: Lifecycle.Event = Lifecycle.Event.ON_DESTROY) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
