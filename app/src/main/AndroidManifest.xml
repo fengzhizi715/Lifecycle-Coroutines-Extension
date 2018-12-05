@@ -21,6 +21,11 @@
             android:name=".activity.Demo4AsyncActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.Demo4BindActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

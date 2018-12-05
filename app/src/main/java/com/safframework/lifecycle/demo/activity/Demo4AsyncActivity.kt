@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.safframework.lifecycle.asyncWithLifecycle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 
 /**
  *
@@ -26,6 +27,8 @@ class Demo4AsyncActivity: AppCompatActivity() {
         mContext = this
 
         GlobalScope.asyncWithLifecycle(this,Dispatchers.Main) {
+
+            delay(1000)
 
             Toast.makeText(mContext,"hi, this must use 'Dispatchers.Main'",Toast.LENGTH_SHORT).show()
         }
