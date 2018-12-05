@@ -40,7 +40,7 @@ class LifecycleCoroutineListener(private val job: Job,
 fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
                                        context: CoroutineContext = EmptyCoroutineContext,
                                        start: CoroutineStart = CoroutineStart.DEFAULT,
-                                       block: suspend CoroutineScope.() -> T): Deferred<T> {
+                                       block: () -> T): Deferred<T> {
 
     val deferred = GlobalScope.async(context,start) {
 
