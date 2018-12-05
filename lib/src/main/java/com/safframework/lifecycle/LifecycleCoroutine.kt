@@ -1,9 +1,9 @@
 package com.safframework.lifecycle
 
-import android.arch.lifecycle.GenericLifecycleObserver
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleOwner
-import kotlinx.coroutines.Deferred
+import android.arch.lifecycle.*
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 /**
  *
@@ -13,20 +13,46 @@ import kotlinx.coroutines.Deferred
  * @date: 2018-12-05 14:02
  * @version: V1.0 <描述当前版本功能>
  */
-class CoroutineLifecycleListener(
-        private val deferred: Deferred<*>,
-        private val untilEvent: Lifecycle.Event = Lifecycle.Event.ON_DESTROY
-) : GenericLifecycleObserver {
-    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-        //if the event is what you need
-        if (event == untilEvent) {
-            //if the job is not cancelled
-            if (!deferred.isCancelled) {
-                deferred.cancel()
-            }
-            //remove the observer
-            source.lifecycle.removeObserver(this)
+class LifecycleCoroutineListener(private val job: Job,
+                                 private val cancelEvent: Lifecycle.Event = Lifecycle.Event.ON_DESTROY) : LifecycleObserver {
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    fun pause() = handleEvent(Lifecycle.Event.ON_PAUSE)
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun stop() = handleEvent(Lifecycle.Event.ON_STOP)
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun destroy() = handleEvent(Lifecycle.Event.ON_DESTROY)
+
+    private fun handleEvent(e: Lifecycle.Event) {
+
+        if (e == cancelEvent && !job.isCancelled) {
+            job.cancel()
         }
     }
 }
 
+fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
+                                       context: CoroutineContext = EmptyCoroutineContext,
+                                       start: CoroutineStart = CoroutineStart.DEFAULT,
+                                       block: suspend CoroutineScope.() -> T): Deferred<T> {
+
+    val deferred = GlobalScope.async(context,start) {
+
+        return@async block()
+    }
+
+    lifecycleOwner.lifecycle.addObserver(LifecycleCoroutineListener(deferred))
+
+    return deferred
+}
+
+inline fun <T> GlobalScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
+                                         block: CoroutineScope.() -> Deferred<T>): Deferred<T> {
+    val job = block.invoke(this)
+
+    lifecycleOwner.lifecycle.addObserver(LifecycleCoroutineListener(job))
+
+    return job
+}
