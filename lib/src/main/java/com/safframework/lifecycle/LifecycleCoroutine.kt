@@ -48,11 +48,19 @@ fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
     return deferred
 }
 
-inline fun <T> GlobalScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
+fun <T> GlobalScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
                                          block: CoroutineScope.() -> Deferred<T>): Deferred<T> {
     val job = block.invoke(this)
 
     lifecycleOwner.lifecycle.addObserver(LifecycleCoroutineListener(job))
 
     return job
+}
+
+infix fun <T> Deferred<T>.then(block: (T) -> Unit): Job {
+
+    return GlobalScope.launch(context = Dispatchers.Main) {
+
+        block(this@then.await())
+    }
 }
