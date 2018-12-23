@@ -10,3 +10,6 @@ Gradle:
 ```groovy
 implementation 'com.safframework.lifecycle:lifecycle-coroutine-ext:0.1.0'
 ```
+
+详见：
+https://www.jianshu.com/p/429e78c86875
