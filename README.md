@@ -8,7 +8,7 @@
 
 Gradle:
 ```groovy
-implementation 'com.safframework.lifecycle:lifecycle-coroutine-ext:0.1.0'
+implementation 'com.safframework.lifecycle:lifecycle-coroutine-ext:0.1.1'
 ```
 
 详见：
