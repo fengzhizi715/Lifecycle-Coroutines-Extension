@@ -14,6 +14,13 @@ import kotlin.coroutines.EmptyCoroutineContext
  * @version: V1.0 <描述当前版本功能>
  */
 
+val UI: CoroutineDispatcher = Dispatchers.Main
+val IO: CoroutineDispatcher = Dispatchers.IO
+
+fun runOnUI(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = UI, block = block)
+
+fun runInBackground(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = IO, block = block)
+
 fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
                                        context: CoroutineContext = EmptyCoroutineContext,
                                        start: CoroutineStart = CoroutineStart.DEFAULT,
