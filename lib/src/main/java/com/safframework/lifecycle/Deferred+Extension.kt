@@ -28,22 +28,21 @@ infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R): Deferred<R> {
     }
 }
 
-suspend fun <T> Deferred<T>.awaitOrNull(timeout: Long = 0L): T? {
-    return try {
-        if (timeout > 0) {
+suspend fun <T> Deferred<T>.awaitOrNull(timeout: Long = 0L) = try {
 
-            withTimeout(timeout) {
+    if (timeout > 0) {
 
-                this@awaitOrNull.await()
-            }
+        withTimeout(timeout) {
 
-        } else {
-
-            this.await()
+            this@awaitOrNull.await()
         }
-    } catch (e: Exception) {
 
-        Log.e("Deferred", e.message)
-        null
+    } else {
+
+        this.await()
     }
+} catch (e: Exception) {
+
+    Log.e("Deferred", e.message)
+    null
 }
