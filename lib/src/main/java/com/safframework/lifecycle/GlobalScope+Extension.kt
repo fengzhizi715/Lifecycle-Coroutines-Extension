@@ -19,7 +19,11 @@ val IO: CoroutineDispatcher = Dispatchers.IO
 
 fun runOnUI(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = UI, block = block)
 
+fun <T> runOnUI(block: suspend CoroutineScope.() -> T): Deferred<T> = GlobalScope.async(context = UI, block = block)
+
 fun runInBackground(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = IO, block = block)
+
+fun <T> runInBackground(block: suspend CoroutineScope.() -> T): Deferred<T> = GlobalScope.async(context = IO, block = block)
 
 fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
                                        context: CoroutineContext = EmptyCoroutineContext,
