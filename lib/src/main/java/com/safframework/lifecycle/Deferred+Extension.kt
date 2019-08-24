@@ -14,7 +14,7 @@ import kotlinx.coroutines.*
 
 infix fun <T> Deferred<T>.then(block: (T) -> Unit): Job {
 
-    return GlobalScope.launch(context = Dispatchers.Main) {
+    return GlobalScope.launch(context = UI) {
 
         block(this@then.await())
     }
@@ -22,7 +22,7 @@ infix fun <T> Deferred<T>.then(block: (T) -> Unit): Job {
 
 infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R): Deferred<R> {
 
-    return GlobalScope.async(context = Dispatchers.Main) {
+    return GlobalScope.async(context = UI) {
 
         block(this@thenAsync.await())
     }
