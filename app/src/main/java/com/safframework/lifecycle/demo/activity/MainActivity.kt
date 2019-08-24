@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         text6.setOnClickListener {
 
-            val i = Intent(this,Demo4RunFunctionActivity::class.java)
+            val i = Intent(this,Demo4RunOnUIActivity::class.java)
             startActivity(i)
         }
     }

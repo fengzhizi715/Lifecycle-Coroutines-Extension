@@ -11,12 +11,12 @@ import kotlinx.coroutines.delay
 /**
  *
  * @FileName:
- *          com.safframework.lifecycle.demo.activity.Demo4RunFunctionActivity
+ *          com.safframework.lifecycle.demo.activity.Demo4RunOnUIActivity
  * @author: Tony Shen
  * @date: 2019-08-24 21:48
  * @version: V1.0 <描述当前版本功能>
  */
-class Demo4RunFunctionActivity: AppCompatActivity() {
+class Demo4RunOnUIActivity: AppCompatActivity() {
 
     lateinit var mContext: Context
 
