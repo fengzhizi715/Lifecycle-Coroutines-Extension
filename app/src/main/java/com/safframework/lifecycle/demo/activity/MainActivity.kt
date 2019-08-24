@@ -50,5 +50,11 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this,Demo4AwaitOrNullActivity::class.java)
             startActivity(i)
         }
+
+        text6.setOnClickListener {
+
+            val i = Intent(this,Demo4RunFunctionActivity::class.java)
+            startActivity(i)
+        }
     }
 }
