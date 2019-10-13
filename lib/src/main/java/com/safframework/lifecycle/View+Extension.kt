@@ -27,6 +27,11 @@ val View.autoDisposeScope: CoroutineScope
         return ViewCoroutineScope(SupervisorJob() + UI + autoDisposeInterceptor())
     }
 
+val View.asyncAutoDisposeScope: CoroutineScope
+    get() {
+        return ViewCoroutineScope(SupervisorJob() + IO + autoDisposeInterceptor())
+    }
+
 private class ViewCoroutineScope(
         override val coroutineContext: CoroutineContext
 ) : CoroutineScope
