@@ -13,6 +13,7 @@ import kotlinx.coroutines.Job
  * @version: V1.0 <描述当前版本功能>
  */
 fun View.autoDispose(job: Job) {
+
     val listener = ViewListener(this, job)
     this.addOnAttachStateChangeListener(listener)
 }
@@ -28,7 +29,6 @@ private class ViewListener(
     }
 
     override fun onViewAttachedToWindow(v: View) {
-        // do nothing
     }
 
     override fun invoke(cause: Throwable?) {
