@@ -2,7 +2,12 @@ package com.safframework.lifecycle.demo.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.safframework.lifecycle.autoDispose
 import com.safframework.lifecycle.demo.R
+import com.safframework.lifecycle.demo.utils.ping
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  *
@@ -17,6 +22,16 @@ class Demo4AutoDisposeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_layout)
+
+        text1.setOnClickListener {
+
+            val job = GlobalScope.launch {
+
+                ping()
+            }
+
+            job.autoDispose(it)
+        }
     }
 
 }
