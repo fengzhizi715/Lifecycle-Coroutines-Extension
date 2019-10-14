@@ -8,12 +8,12 @@ import kotlinx.coroutines.Job
 /**
  *
  * @FileName:
- *          com.safframework.lifecycle.LifecycleCoroutine
+ *          com.safframework.lifecycle.LifecycleCoroutineListener
  * @author: Tony Shen
  * @date: 2018-12-05 14:02
  * @version: V1.0 <描述当前版本功能>
  */
-open class LifecycleCoroutineListener(private val job: Job,
+class LifecycleCoroutineListener(private val job: Job,
                                  private val cancelEvent: Lifecycle.Event = Lifecycle.Event.ON_DESTROY) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
