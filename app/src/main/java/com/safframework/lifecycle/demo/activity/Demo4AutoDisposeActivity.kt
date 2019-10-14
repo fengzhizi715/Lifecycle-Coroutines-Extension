@@ -2,7 +2,9 @@ package com.safframework.lifecycle.demo.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.safframework.lifecycle.IO
 import com.safframework.lifecycle.autoDispose
+import com.safframework.lifecycle.autoDisposeScope
 import com.safframework.lifecycle.demo.R
 import com.safframework.lifecycle.demo.utils.ping
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,6 +33,16 @@ class Demo4AutoDisposeActivity: AppCompatActivity() {
             }
 
             job.autoDispose(it)
+        }
+
+        text2.setOnClickListener {
+
+            text2.autoDisposeScope.launch(IO) {
+
+                println("thread name="+Thread.currentThread().name)
+                val result = ping()
+                println("result = "+result)
+            }
         }
     }
 
