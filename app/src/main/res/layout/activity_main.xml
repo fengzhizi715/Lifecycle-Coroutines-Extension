@@ -58,4 +58,13 @@
         android:gravity="center"
         android:text="runOnUI的使用"/>
 
+    <TextView
+        android:id="@+id/text7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:text="autoDisposeScope 的使用"/>
+
 </LinearLayout>

@@ -56,5 +56,11 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this,Demo4RunOnUIActivity::class.java)
             startActivity(i)
         }
+
+        text7.setOnClickListener {
+
+            val i = Intent(this,Demo4AutoDisposeActivity::class.java)
+            startActivity(i)
+        }
     }
 }
