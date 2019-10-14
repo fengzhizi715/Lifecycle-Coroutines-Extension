@@ -39,9 +39,7 @@ class Demo4AutoDisposeActivity: AppCompatActivity() {
 
             text2.autoDisposeScope.launch(IO) {
 
-                println("thread name="+Thread.currentThread().name)
-                val result = ping()
-                println("result = "+result)
+                ping()
             }
         }
     }
