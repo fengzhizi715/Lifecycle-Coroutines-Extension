@@ -1,9 +1,7 @@
 package com.safframework.lifecycle
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.*
+import java.io.Closeable
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -22,6 +20,11 @@ fun defaultScope(): CoroutineScope = ContextScope(SupervisorJob() + Dispatchers.
 
 fun customScope(dispatcher: CoroutineDispatcher): CoroutineScope = ContextScope(SupervisorJob() + dispatcher)
 
-internal class ContextScope(context: CoroutineContext) : CoroutineScope {
+internal class ContextScope(context: CoroutineContext) : CoroutineScope, Closeable {
+
     override val coroutineContext: CoroutineContext = context
+
+    override fun close() {
+        coroutineContext.cancelChildren()
+    }
 }
