@@ -13,10 +13,6 @@ import kotlin.coroutines.EmptyCoroutineContext
  * @date: 2019-08-24 18:54
  * @version: V1.0 <描述当前版本功能>
  */
-
-val UI: CoroutineDispatcher = Dispatchers.Main
-val IO: CoroutineDispatcher = Dispatchers.IO
-
 fun runOnUI(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = UI, block = block)
 
 fun runInBackground(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = IO, block = block)
