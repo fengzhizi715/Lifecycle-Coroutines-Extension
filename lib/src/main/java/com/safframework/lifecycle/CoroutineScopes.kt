@@ -12,6 +12,7 @@ import kotlin.coroutines.CoroutineContext
  * @date: 2019-10-16 02:08
  * @version: V1.0 <描述当前版本功能>
  */
+
 fun ioScope(): CoroutineScope = ContextScope(SupervisorJob() + IO)
 
 fun uiScope(): CoroutineScope = ContextScope(SupervisorJob() + UI)
