@@ -17,7 +17,7 @@ fun ioScope(): CoroutineScope = ContextScope(SupervisorJob() + IO)
 
 fun uiScope(): CoroutineScope = ContextScope(SupervisorJob() + UI)
 
-fun defaultScope(): CoroutineScope = ContextScope(SupervisorJob() + Dispatchers.Default)
+fun defaultScope(): CoroutineScope = ContextScope(SupervisorJob() + Default)
 
 fun customScope(dispatcher: CoroutineDispatcher): CoroutineScope = ContextScope(SupervisorJob() + dispatcher)
 

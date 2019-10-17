@@ -2,6 +2,7 @@ package com.safframework.lifecycle
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlin.reflect.jvm.internal.impl.load.java.JavaClassesTracker
 
 /**
  *
@@ -14,3 +15,5 @@ import kotlinx.coroutines.Dispatchers
 val UI: CoroutineDispatcher = Dispatchers.Main
 
 val IO: CoroutineDispatcher = Dispatchers.IO
+
+val Default: CoroutineDispatcher = Dispatchers.Default
