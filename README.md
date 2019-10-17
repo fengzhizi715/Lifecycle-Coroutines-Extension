@@ -14,6 +14,8 @@ implementation 'com.safframework.lifecycle:lifecycle-coroutine-ext:0.2.0'
 详见：
 https://www.jianshu.com/p/429e78c86875
 
+稍后带来更详细的介绍
+
 
 # 联系方式:
 
