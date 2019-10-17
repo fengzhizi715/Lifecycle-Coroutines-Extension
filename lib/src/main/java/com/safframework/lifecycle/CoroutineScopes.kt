@@ -1,5 +1,7 @@
 package com.safframework.lifecycle
 
+import com.safframework.lifecycle.exception.CoroutineErrorListener
+import com.safframework.lifecycle.exception.UncaughtCoroutineExceptionHandler
 import kotlinx.coroutines.*
 import java.io.Closeable
 import kotlin.coroutines.CoroutineContext
@@ -15,11 +17,19 @@ import kotlin.coroutines.CoroutineContext
 
 fun ioScope(): CoroutineScope = ContextScope(SupervisorJob() + IO)
 
+fun safeIOScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + IO + UncaughtCoroutineExceptionHandler(errorHandler))
+
 fun uiScope(): CoroutineScope = ContextScope(SupervisorJob() + UI)
+
+fun safeUIScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + UI + UncaughtCoroutineExceptionHandler(errorHandler))
 
 fun defaultScope(): CoroutineScope = ContextScope(SupervisorJob() + Default)
 
+fun safeDefaultScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + Default + UncaughtCoroutineExceptionHandler(errorHandler))
+
 fun customScope(dispatcher: CoroutineDispatcher): CoroutineScope = ContextScope(SupervisorJob() + dispatcher)
+
+fun safeCustomScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + dispatcher + UncaughtCoroutineExceptionHandler(errorHandler))
 
 internal class ContextScope(context: CoroutineContext) : CoroutineScope, Closeable {
 
