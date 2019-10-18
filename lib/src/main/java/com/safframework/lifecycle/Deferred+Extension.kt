@@ -12,20 +12,14 @@ import kotlinx.coroutines.*
  * @version: V1.0 <描述当前版本功能>
  */
 
-infix fun <T> Deferred<T>.then(block: (T) -> Unit): Job {
+infix fun <T> Deferred<T>.then(block: (T) -> Unit) = GlobalScope.launch(context = UI) {
 
-    return GlobalScope.launch(context = UI) {
-
-        block(this@then.await())
-    }
+    block(this@then.await())
 }
 
-infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R): Deferred<R> {
+infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R) = GlobalScope.async(context = UI) {
 
-    return GlobalScope.async(context = UI) {
-
-        block(this@thenAsync.await())
-    }
+    block(this@thenAsync.await())
 }
 
 suspend fun <T> Deferred<T>.awaitOrNull(timeout: Long = 0L) = try {
