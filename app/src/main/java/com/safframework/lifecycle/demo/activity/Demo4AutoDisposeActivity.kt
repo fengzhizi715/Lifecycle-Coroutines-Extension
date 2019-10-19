@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.safframework.lifecycle.IO
 import com.safframework.lifecycle.UI
+import com.safframework.lifecycle.defaultScope
 import com.safframework.lifecycle.demo.R
 import com.safframework.lifecycle.demo.utils.ping
 import com.safframework.lifecycle.extension.autoDispose
@@ -28,9 +29,10 @@ class Demo4AutoDisposeActivity: AppCompatActivity() {
 
         text1.setOnClickListener {
 
-            val job = GlobalScope.launch {
+            val job = defaultScope().launch {
 
-                ping()
+                val result = ping()
+                println("result = $result")
             }
 
             job.autoDispose(it)
@@ -40,7 +42,8 @@ class Demo4AutoDisposeActivity: AppCompatActivity() {
 
             text2.autoDisposeScope.launch {
 
-                ping()
+                val result = ping()
+                println("result = $result")
             }
         }
     }

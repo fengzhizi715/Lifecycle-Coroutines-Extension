@@ -8,7 +8,6 @@ import com.safframework.lifecycle.IO
 import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.extension.asyncWithLifecycle
 import com.safframework.lifecycle.extension.awaitOrNull
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 

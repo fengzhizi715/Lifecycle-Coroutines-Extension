@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.safframework.lifecycle.Default
-import com.safframework.lifecycle.UI
+import com.safframework.lifecycle.asyncOnUI
 import com.safframework.lifecycle.extension.bindWithLifecycle
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -31,7 +30,7 @@ class Demo4BindActivity: AppCompatActivity() {
 
         GlobalScope.bindWithLifecycle(this) {
 
-            GlobalScope.async(UI) {
+            asyncOnUI {
 
                 val deferred1 = async(Default) {
 
