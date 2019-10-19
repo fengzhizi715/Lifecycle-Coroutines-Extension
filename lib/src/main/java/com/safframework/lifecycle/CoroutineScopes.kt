@@ -1,7 +1,7 @@
 package com.safframework.lifecycle
 
 import com.safframework.lifecycle.listener.CoroutineErrorListener
-import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.*
 
 /**
  *
@@ -11,6 +11,21 @@ import kotlinx.coroutines.CoroutineDispatcher
  * @date: 2019-10-16 02:08
  * @version: V1.0 <描述当前版本功能>
  */
+val UI: CoroutineDispatcher = Dispatchers.Main
+
+val IO: CoroutineDispatcher = Dispatchers.IO
+
+val Default: CoroutineDispatcher = Dispatchers.Default
+
+
+fun runOnUI(block: suspend CoroutineScope.() -> Unit): Job = uiScope().launch(block = block)
+
+fun runInBackground(block: suspend CoroutineScope.() -> Unit): Job = ioScope().launch(block = block)
+
+fun <T> asyncOnUI(block: suspend CoroutineScope.() -> T): Deferred<T> = uiScope().async(block = block)
+
+fun <T> asyncInBackground(block: suspend CoroutineScope.() -> T): Deferred<T> = ioScope().async(block = block)
+
 
 fun ioScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(IO,errorHandler)
 

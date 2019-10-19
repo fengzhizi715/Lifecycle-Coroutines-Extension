@@ -16,14 +16,6 @@ import kotlin.coroutines.EmptyCoroutineContext
  * @date: 2019-08-24 18:54
  * @version: V1.0 <描述当前版本功能>
  */
-fun runOnUI(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = UI, block = block)
-
-fun runInBackground(block: suspend CoroutineScope.() -> Unit): Job = GlobalScope.launch(context = IO, block = block)
-
-fun <T> asyncOnUI(block: suspend CoroutineScope.() -> T): Deferred<T> = GlobalScope.async(context = UI, block = block)
-
-fun <T> asyncInBackground(block: suspend CoroutineScope.() -> T): Deferred<T> = GlobalScope.async(context = IO, block = block)
-
 fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
                                        context: CoroutineContext = EmptyCoroutineContext,
                                        start: CoroutineStart = CoroutineStart.DEFAULT,
