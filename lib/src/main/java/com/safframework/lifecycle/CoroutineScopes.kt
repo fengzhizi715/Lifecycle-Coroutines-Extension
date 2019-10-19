@@ -15,17 +15,17 @@ import kotlin.coroutines.CoroutineContext
  * @version: V1.0 <描述当前版本功能>
  */
 
-fun ioScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + IO + UncaughtCoroutineExceptionHandler(errorHandler))
+fun ioScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(IO + UncaughtCoroutineExceptionHandler(errorHandler))
 
-fun uiScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + UI + UncaughtCoroutineExceptionHandler(errorHandler))
+fun uiScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(UI + UncaughtCoroutineExceptionHandler(errorHandler))
 
-fun defaultScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + Default + UncaughtCoroutineExceptionHandler(errorHandler))
+fun defaultScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(Default + UncaughtCoroutineExceptionHandler(errorHandler))
 
-fun customScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + dispatcher + UncaughtCoroutineExceptionHandler(errorHandler))
+fun customScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(dispatcher + UncaughtCoroutineExceptionHandler(errorHandler))
 
 internal class ContextScope(context: CoroutineContext) : CoroutineScope, Closeable {
 
-    override val coroutineContext: CoroutineContext = context
+    override val coroutineContext: CoroutineContext = SupervisorJob() + context
 
     override fun close() {
         coroutineContext.cancelChildren()
