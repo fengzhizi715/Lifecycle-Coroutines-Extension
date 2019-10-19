@@ -1,9 +1,9 @@
-package com.safframework.lifecycle.exception
+package com.safframework.lifecycle.listener
 
 /**
  *
  * @FileName:
- *          com.safframework.lifecycle.exception.CoroutineErrorListener
+ *          com.safframework.lifecycle.listener.CoroutineErrorListener
  * @author: Tony Shen
  * @date: 2019-10-18 02:12
  * @version: V1.0 <描述当前版本功能>

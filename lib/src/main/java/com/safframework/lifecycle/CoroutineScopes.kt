@@ -1,6 +1,6 @@
 package com.safframework.lifecycle
 
-import com.safframework.lifecycle.exception.CoroutineErrorListener
+import com.safframework.lifecycle.listener.CoroutineErrorListener
 import com.safframework.lifecycle.exception.UncaughtCoroutineExceptionHandler
 import kotlinx.coroutines.*
 import java.io.Closeable
