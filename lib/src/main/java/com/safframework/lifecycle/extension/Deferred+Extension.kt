@@ -2,6 +2,7 @@ package com.safframework.lifecycle.extension
 
 import android.util.Log
 import com.safframework.lifecycle.UI
+import com.safframework.lifecycle.uiScope
 import kotlinx.coroutines.*
 
 /**
@@ -13,12 +14,12 @@ import kotlinx.coroutines.*
  * @version: V1.0 <描述当前版本功能>
  */
 
-infix fun <T> Deferred<T>.then(block: (T) -> Unit) = GlobalScope.launch(context = UI) {
+infix fun <T> Deferred<T>.then(block: (T) -> Unit) = uiScope().launch {
 
     block(this@then.await())
 }
 
-infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R) = GlobalScope.async(context = UI) {
+infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R)= uiScope().async {
 
     block(this@thenAsync.await())
 }
