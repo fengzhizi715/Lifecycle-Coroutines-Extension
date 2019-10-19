@@ -1,6 +1,7 @@
 package com.safframework.lifecycle.extension
 
 import android.view.View
+import com.safframework.lifecycle.SafeCoroutineScope
 import com.safframework.lifecycle.UI
 import kotlinx.coroutines.*
 import kotlin.coroutines.Continuation
@@ -27,12 +28,8 @@ fun viewAutoDisposeInterceptor(view: View): ContinuationInterceptor = ViewAutoDi
 
 val View.autoDisposeScope: CoroutineScope
     get() {
-        return ViewCoroutineScope(SupervisorJob() + UI + autoDisposeInterceptor())
+        return SafeCoroutineScope(UI + autoDisposeInterceptor())
     }
-
-private class ViewCoroutineScope(
-        override val coroutineContext: CoroutineContext
-) : CoroutineScope
 
 private class ViewListener(
         private val view: View,

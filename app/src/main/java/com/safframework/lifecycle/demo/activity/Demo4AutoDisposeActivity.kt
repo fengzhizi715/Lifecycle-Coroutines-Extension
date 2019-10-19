@@ -3,6 +3,7 @@ package com.safframework.lifecycle.demo.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.safframework.lifecycle.IO
+import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.demo.R
 import com.safframework.lifecycle.demo.utils.ping
 import com.safframework.lifecycle.extension.autoDispose
@@ -37,7 +38,7 @@ class Demo4AutoDisposeActivity: AppCompatActivity() {
 
         text2.setOnClickListener {
 
-            text2.autoDisposeScope.launch(IO) {
+            text2.autoDisposeScope.launch {
 
                 ping()
             }
