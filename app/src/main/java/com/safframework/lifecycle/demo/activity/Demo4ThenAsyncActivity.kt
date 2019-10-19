@@ -4,10 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.safframework.lifecycle.IO
 import com.safframework.lifecycle.extension.asyncWithLifecycle
 import com.safframework.lifecycle.extension.then
 import com.safframework.lifecycle.extension.thenAsync
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 
@@ -28,7 +28,7 @@ class Demo4ThenAsyncActivity: AppCompatActivity() {
 
         mContext = this
 
-        GlobalScope.asyncWithLifecycle(this, Dispatchers.IO) {
+        GlobalScope.asyncWithLifecycle(this, IO) {
 
             delay(5000) // 模拟耗时的网络请求
             1

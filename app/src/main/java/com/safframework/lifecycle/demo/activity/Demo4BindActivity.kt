@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.safframework.lifecycle.Default
+import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.extension.bindWithLifecycle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -29,15 +31,15 @@ class Demo4BindActivity: AppCompatActivity() {
 
         GlobalScope.bindWithLifecycle(this) {
 
-            GlobalScope.async(Dispatchers.Main) {
+            GlobalScope.async(UI) {
 
-                val deferred1 = async(Dispatchers.Default) {
+                val deferred1 = async(Default) {
 
                     delay(1000)
                     1
                 }
 
-                val deferred2 = async(Dispatchers.Default) {
+                val deferred2 = async(Default) {
 
                     delay(1500)
                     2

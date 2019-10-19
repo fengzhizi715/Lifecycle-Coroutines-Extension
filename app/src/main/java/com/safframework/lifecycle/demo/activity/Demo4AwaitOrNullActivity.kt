@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.safframework.lifecycle.IO
+import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.extension.asyncWithLifecycle
 import com.safframework.lifecycle.extension.awaitOrNull
 import kotlinx.coroutines.Dispatchers
@@ -27,13 +29,13 @@ class Demo4AwaitOrNullActivity: AppCompatActivity() {
 
         mContext = this
 
-        val deferred = GlobalScope.asyncWithLifecycle(this, Dispatchers.IO) {
+        val deferred = GlobalScope.asyncWithLifecycle(this, IO) {
 
             delay(5000) // 模拟耗时的网络请求
             1
         }
 
-        GlobalScope.asyncWithLifecycle(this,Dispatchers.Main) {
+        GlobalScope.asyncWithLifecycle(this, UI) {
 
             val result = deferred.awaitOrNull(4000)
 
