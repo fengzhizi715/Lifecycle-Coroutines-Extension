@@ -2,7 +2,6 @@ package com.safframework.lifecycle
 
 import com.safframework.lifecycle.listener.CoroutineErrorListener
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
 
 /**
  *
@@ -13,10 +12,10 @@ import kotlinx.coroutines.CoroutineScope
  * @version: V1.0 <描述当前版本功能>
  */
 
-fun ioScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = SafeCoroutineScope(IO,errorHandler)
+fun ioScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(IO,errorHandler)
 
-fun uiScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = SafeCoroutineScope(UI,errorHandler)
+fun uiScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(UI,errorHandler)
 
-fun defaultScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = SafeCoroutineScope(Default,errorHandler)
+fun defaultScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(Default,errorHandler)
 
-fun customScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null): CoroutineScope = SafeCoroutineScope(dispatcher,errorHandler)
+fun customScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(dispatcher,errorHandler)

@@ -1,4 +1,4 @@
-package com.safframework.lifecycle
+package com.safframework.lifecycle.extension
 
 import android.os.Build
 import android.view.View
