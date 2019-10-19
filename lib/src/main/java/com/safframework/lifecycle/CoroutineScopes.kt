@@ -16,6 +16,8 @@ fun ioScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(IO,
 
 fun uiScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(UI,errorHandler)
 
-fun defaultScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(Default,errorHandler)
+fun defaultScope(errorHandler: CoroutineErrorListener?=null) = safeScope(errorHandler)
+
+fun safeScope(errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(Default,errorHandler)
 
 fun customScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null) = SafeCoroutineScope(dispatcher,errorHandler)
