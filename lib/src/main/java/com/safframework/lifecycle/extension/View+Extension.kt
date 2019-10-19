@@ -22,13 +22,9 @@ fun View.autoDispose(job: Job) {
     this.addOnAttachStateChangeListener(listener)
 }
 
-fun View.autoDisposeInterceptor() = viewAutoDisposeInterceptor(this)
-
-fun viewAutoDisposeInterceptor(view: View): ContinuationInterceptor = ViewAutoDisposeInterceptorImpl(view)
-
 val View.autoDisposeScope: CoroutineScope
     get() {
-        return SafeCoroutineScope(UI + autoDisposeInterceptor())
+        return SafeCoroutineScope(UI + ViewAutoDisposeInterceptorImpl(this))
     }
 
 private class ViewListener(
