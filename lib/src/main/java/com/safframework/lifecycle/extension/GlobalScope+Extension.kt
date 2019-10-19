@@ -1,8 +1,6 @@
 package com.safframework.lifecycle.extension
 
 import android.arch.lifecycle.LifecycleOwner
-import com.safframework.lifecycle.IO
-import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.listener.LifecycleCoroutineListener
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -32,7 +30,7 @@ fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
 }
 
 fun <T> GlobalScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
-                                      block: CoroutineScope.() -> Deferred<T>): Deferred<T> {
+                                             block: GlobalScope.() -> Deferred<T>): Deferred<T> {
 
     val deferred = block.invoke(this)
 

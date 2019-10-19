@@ -4,12 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import com.safframework.lifecycle.Default
-import com.safframework.lifecycle.asyncOnUI
+import com.safframework.lifecycle.*
 import com.safframework.lifecycle.extension.bindWithLifecycle
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
+import java.lang.Exception
 
 /**
  *
@@ -32,13 +30,13 @@ class Demo4BindActivity: AppCompatActivity() {
 
             asyncOnUI {
 
-                val deferred1 = async(Default) {
+                val deferred1 = asyncInBackground {
 
                     delay(1000)
                     1
                 }
 
-                val deferred2 = async(Default) {
+                val deferred2 = asyncInBackground {
 
                     delay(1500)
                     2
@@ -47,6 +45,8 @@ class Demo4BindActivity: AppCompatActivity() {
                 val result = deferred1.await() + deferred2.await()
 
                 Toast.makeText(mContext,"the result is $result",Toast.LENGTH_SHORT).show()
+
+                throw Exception("111222")
             }
         }
     }
