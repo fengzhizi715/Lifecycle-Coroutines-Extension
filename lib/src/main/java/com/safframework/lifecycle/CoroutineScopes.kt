@@ -15,21 +15,13 @@ import kotlin.coroutines.CoroutineContext
  * @version: V1.0 <描述当前版本功能>
  */
 
-fun ioScope(): CoroutineScope = ContextScope(SupervisorJob() + IO)
+fun ioScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + IO + UncaughtCoroutineExceptionHandler(errorHandler))
 
-fun safeIOScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + IO + UncaughtCoroutineExceptionHandler(errorHandler))
+fun uiScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + UI + UncaughtCoroutineExceptionHandler(errorHandler))
 
-fun uiScope(): CoroutineScope = ContextScope(SupervisorJob() + UI)
+fun defaultScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + Default + UncaughtCoroutineExceptionHandler(errorHandler))
 
-fun safeUIScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + UI + UncaughtCoroutineExceptionHandler(errorHandler))
-
-fun defaultScope(): CoroutineScope = ContextScope(SupervisorJob() + Default)
-
-fun safeDefaultScope(errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + Default + UncaughtCoroutineExceptionHandler(errorHandler))
-
-fun customScope(dispatcher: CoroutineDispatcher): CoroutineScope = ContextScope(SupervisorJob() + dispatcher)
-
-fun safeCustomScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + dispatcher + UncaughtCoroutineExceptionHandler(errorHandler))
+fun customScope(dispatcher: CoroutineDispatcher,errorHandler: CoroutineErrorListener?=null): CoroutineScope = ContextScope(SupervisorJob() + dispatcher + UncaughtCoroutineExceptionHandler(errorHandler))
 
 internal class ContextScope(context: CoroutineContext) : CoroutineScope, Closeable {
 
