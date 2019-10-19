@@ -1,6 +1,7 @@
 package com.safframework.lifecycle
 
 import android.arch.lifecycle.LifecycleOwner
+import com.safframework.lifecycle.listener.LifecycleCoroutineListener
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext

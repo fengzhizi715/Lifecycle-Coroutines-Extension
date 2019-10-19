@@ -1,4 +1,4 @@
-package com.safframework.lifecycle
+package com.safframework.lifecycle.listener
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
@@ -8,7 +8,7 @@ import kotlinx.coroutines.Job
 /**
  *
  * @FileName:
- *          com.safframework.lifecycle.LifecycleCoroutineListener
+ *          com.safframework.lifecycle.listener.LifecycleCoroutineListener
  * @author: Tony Shen
  * @date: 2018-12-05 14:02
  * @version: V1.0 <描述当前版本功能>
