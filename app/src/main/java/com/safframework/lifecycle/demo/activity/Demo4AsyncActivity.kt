@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.extension.asyncWithLifecycle
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 
@@ -27,7 +26,7 @@ class Demo4AsyncActivity: AppCompatActivity() {
 
         mContext = this
 
-        GlobalScope.asyncWithLifecycle(this, UI) {
+        GlobalScope.asyncWithLifecycle(this, context = UI) {
 
             delay(1000)
 

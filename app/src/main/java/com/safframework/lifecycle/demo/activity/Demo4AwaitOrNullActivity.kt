@@ -28,13 +28,13 @@ class Demo4AwaitOrNullActivity: AppCompatActivity() {
 
         mContext = this
 
-        val deferred = GlobalScope.asyncWithLifecycle(this, IO) {
+        val deferred = GlobalScope.asyncWithLifecycle(this, context = IO) {
 
             delay(5000) // 模拟耗时的网络请求
             1
         }
 
-        GlobalScope.asyncWithLifecycle(this, UI) {
+        GlobalScope.asyncWithLifecycle(this, context = UI) {
 
             val result = deferred.awaitOrNull(4000)
 
