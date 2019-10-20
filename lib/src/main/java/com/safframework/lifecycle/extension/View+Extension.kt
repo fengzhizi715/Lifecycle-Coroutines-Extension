@@ -16,12 +16,15 @@ import kotlin.coroutines.CoroutineContext
  * @date: 2019-10-10 13:16
  * @version: V1.0 <描述当前版本功能>
  */
+
+// 在 Android View 中使用的 Job，能够在 View 的生命周期内自动 Disposable
 fun View.autoDispose(job: Job) {
 
     val listener = ViewListener(this, job)
     this.addOnAttachStateChangeListener(listener)
 }
 
+// 在 Android View 中创建 autoDisposeScope，支持主线程运行、异常处理、Job 能够在 View 的生命周期内自动 Disposable
 val View.autoDisposeScope: CoroutineScope
     get() {
         return SafeCoroutineScope(UI + ViewAutoDisposeInterceptorImpl(this))

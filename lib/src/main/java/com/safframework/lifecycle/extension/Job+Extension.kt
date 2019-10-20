@@ -13,6 +13,8 @@ import kotlinx.coroutines.*
  * @date: 2019-10-13 14:21
  * @version: V1.0 <描述当前版本功能>
  */
+
+// 在 Android View 中使用的 Job，能够在 View 的生命周期内自动 Disposable
 fun Job.autoDispose(view: View) = AutoDisposableJob(view, this)
 
 class AutoDisposableJob(private val view: View, private val job: Job)

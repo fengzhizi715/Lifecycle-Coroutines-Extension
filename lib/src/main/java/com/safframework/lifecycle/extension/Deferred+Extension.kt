@@ -1,7 +1,6 @@
 package com.safframework.lifecycle.extension
 
 import android.util.Log
-import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.uiScope
 import kotlinx.coroutines.*
 
@@ -24,6 +23,9 @@ infix fun <T, R> Deferred<T>.thenAsync(block: (T) -> R)= uiScope().async {
     block(this@thenAsync.await())
 }
 
+/**
+ * 如果遇到超时或者异常，则返回null。
+ */
 suspend fun <T> Deferred<T>.awaitOrNull(timeout: Long = 0L) = try {
 
     if (timeout > 0) {
