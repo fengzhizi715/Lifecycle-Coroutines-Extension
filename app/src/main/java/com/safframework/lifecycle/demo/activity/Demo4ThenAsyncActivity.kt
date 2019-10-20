@@ -28,7 +28,7 @@ class Demo4ThenAsyncActivity: AppCompatActivity() {
 
         mContext = this
 
-        GlobalScope.asyncWithLifecycle(this, IO) {
+        GlobalScope.asyncWithLifecycle(this, context = IO) {
 
             delay(5000) // 模拟耗时的网络请求
             1
