@@ -3,9 +3,11 @@ package com.safframework.lifecycle.demo.activity
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.Toast
 import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.demo.R
+import com.safframework.lifecycle.listener.CoroutineErrorListener
 import com.safframework.lifecycle.uiScope
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
@@ -42,6 +44,23 @@ class Demo4HandleExceptionActivity: AppCompatActivity() {
         text2.setOnClickListener {
 
             uiScope().launch {
+
+                Toast.makeText(mContext,"handle the exception", Toast.LENGTH_SHORT).show()
+
+                throw Exception("this is an exception")
+            }
+        }
+
+        text3.setOnClickListener {
+
+            val errorHandle = object : CoroutineErrorListener {
+                override fun onError(throwable: Throwable) {
+
+                    Log.e("errorHandle",throwable.localizedMessage)
+                }
+            }
+
+            uiScope(errorHandle).launch {
 
                 Toast.makeText(mContext,"handle the exception", Toast.LENGTH_SHORT).show()
 

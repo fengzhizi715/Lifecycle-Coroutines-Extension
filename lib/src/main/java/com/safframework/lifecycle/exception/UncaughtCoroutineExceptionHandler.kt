@@ -1,6 +1,5 @@
 package com.safframework.lifecycle.exception
 
-import android.util.Log
 import com.safframework.lifecycle.listener.CoroutineErrorListener
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlin.coroutines.AbstractCoroutineContextElement
@@ -18,7 +17,7 @@ class UncaughtCoroutineExceptionHandler(val errorHandler: CoroutineErrorListener
         CoroutineExceptionHandler, AbstractCoroutineContextElement(CoroutineExceptionHandler.Key) {
 
     override fun handleException(context: CoroutineContext, throwable: Throwable) {
-        Log.e("Coroutines Error", throwable.localizedMessage)
+        throwable.printStackTrace()
 
         errorHandler?.let {
             it.onError(throwable)
