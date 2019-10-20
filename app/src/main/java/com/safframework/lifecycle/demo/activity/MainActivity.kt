@@ -62,5 +62,11 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this,Demo4AutoDisposeActivity::class.java)
             startActivity(i)
         }
+
+        text8.setOnClickListener {
+
+            val i = Intent(this,Demo4HandleExceptionActivity::class.java)
+            startActivity(i)
+        }
     }
 }
