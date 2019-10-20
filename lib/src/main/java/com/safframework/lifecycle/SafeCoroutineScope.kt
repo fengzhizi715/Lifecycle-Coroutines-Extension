@@ -14,7 +14,7 @@ import kotlin.coroutines.CoroutineContext
  *          com.safframework.lifecycle.SafeCoroutineScope
  * @author: Tony Shen
  * @date: 2019-10-19 12:43
- * @version: V1.0 <描述当前版本功能>
+ * @version: V1.0 安全的 CoroutineScope，支持异常处理
  */
 class SafeCoroutineScope(context: CoroutineContext, errorHandler: CoroutineErrorListener?=null) : CoroutineScope, Closeable {
 
