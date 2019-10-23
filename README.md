@@ -11,8 +11,6 @@ Gradle:
 implementation 'com.safframework.lifecycle:lifecycle-coroutine-ext:1.0.1'
 ```
 
-详见：
-https://www.jianshu.com/p/429e78c86875
 
 稍后带来更详细的介绍
 
