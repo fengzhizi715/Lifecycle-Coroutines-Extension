@@ -10,7 +10,9 @@ import com.safframework.lifecycle.demo.R
 import com.safframework.lifecycle.listener.CoroutineErrorListener
 import com.safframework.lifecycle.uiScope
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 /**
@@ -66,6 +68,24 @@ class Demo4HandleExceptionActivity: AppCompatActivity() {
 
                 throw Exception("this is an exception")
             }
+        }
+
+        text4.setOnClickListener {
+
+            uiScope().launch {
+
+                try {
+                    uiScope().async {
+
+                        throw RuntimeException("this is an exception")
+                        "doSomething..."
+                    }.await()
+                } catch (e: Exception) {
+
+                }
+            }
+
+            Toast.makeText(mContext,"handle the exception", Toast.LENGTH_SHORT).show()
         }
     }
 
