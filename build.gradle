@@ -35,4 +35,3 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-tasks.getByPath(":lib:releaseAndroidJavadocs").enabled = false
