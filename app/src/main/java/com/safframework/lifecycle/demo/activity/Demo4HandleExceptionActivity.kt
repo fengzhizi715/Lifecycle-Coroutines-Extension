@@ -2,15 +2,14 @@ package com.safframework.lifecycle.demo.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.demo.R
 import com.safframework.lifecycle.listener.CoroutineErrorListener
 import com.safframework.lifecycle.uiScope
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Deferred
+import kotlinx.android.synthetic.main.activity_handle_exception.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

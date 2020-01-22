@@ -4,7 +4,7 @@ buildscript {
 
     repositories {
         google()
-        jcenter(){url "http://jcenter.bintray.com/"}
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
@@ -19,7 +19,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter(){url "http://jcenter.bintray.com/"}
+        jcenter()
     }
 
     //加上这些

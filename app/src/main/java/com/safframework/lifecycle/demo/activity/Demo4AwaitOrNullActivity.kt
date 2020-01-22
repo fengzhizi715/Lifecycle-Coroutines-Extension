@@ -2,8 +2,8 @@ package com.safframework.lifecycle.demo.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.safframework.lifecycle.IO
 import com.safframework.lifecycle.UI
 import com.safframework.lifecycle.extension.asyncWithLifecycle

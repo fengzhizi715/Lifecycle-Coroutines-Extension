@@ -1,6 +1,6 @@
 package com.safframework.lifecycle.extension
 
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleOwner
 import com.safframework.lifecycle.listener.LifecycleCoroutineListener
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

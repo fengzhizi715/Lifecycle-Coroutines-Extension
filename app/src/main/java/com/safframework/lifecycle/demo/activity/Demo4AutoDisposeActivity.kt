@@ -1,7 +1,7 @@
 package com.safframework.lifecycle.demo.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.safframework.lifecycle.defaultScope
 import com.safframework.lifecycle.demo.R
 import com.safframework.lifecycle.demo.utils.ping
