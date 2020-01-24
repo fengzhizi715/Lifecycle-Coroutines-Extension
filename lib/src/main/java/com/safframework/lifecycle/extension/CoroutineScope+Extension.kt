@@ -9,12 +9,12 @@ import kotlin.coroutines.EmptyCoroutineContext
 /**
  *
  * @FileName:
- *          com.safframework.lifecycle.`GlobalScope+Extension`
+ *          com.safframework.lifecycle.extension.`CoroutineScope+Extension`
  * @author: Tony Shen
- * @date: 2019-08-24 18:54
+ * @date: 2020-01-24 16:48
  * @version: V1.0 <描述当前版本功能>
  */
-fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
+fun <T> CoroutineScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
                                        context: CoroutineContext = EmptyCoroutineContext,
                                        start: CoroutineStart = CoroutineStart.DEFAULT,
                                        block: suspend CoroutineScope.() -> T): Deferred<T> {
@@ -29,8 +29,8 @@ fun <T> GlobalScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
     return deferred
 }
 
-fun <T> GlobalScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
-                                             block: GlobalScope.() -> Deferred<T>): Deferred<T> {
+fun <T> CoroutineScope.bindWithLifecycle(lifecycleOwner: LifecycleOwner,
+                                      block: CoroutineScope.() -> Deferred<T>): Deferred<T> {
 
     val deferred = block.invoke(this)
 
