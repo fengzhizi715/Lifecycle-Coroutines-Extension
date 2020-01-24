@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.safframework.lifecycle.asyncInBackground
-import com.safframework.lifecycle.runOnUI
+import com.safframework.kotlin.coroutines.asyncInBackground
+import com.safframework.kotlin.coroutines.runOnUI
 import kotlinx.coroutines.delay
 
 /**

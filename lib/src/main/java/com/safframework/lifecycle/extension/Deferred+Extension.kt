@@ -1,7 +1,7 @@
 package com.safframework.lifecycle.extension
 
 import android.util.Log
-import com.safframework.lifecycle.uiScope
+import com.safframework.kotlin.coroutines.uiScope
 import kotlinx.coroutines.*
 
 /**

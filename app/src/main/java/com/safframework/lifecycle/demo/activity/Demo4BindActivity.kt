@@ -4,9 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.safframework.lifecycle.*
+import com.safframework.kotlin.coroutines.asyncInBackground
+import com.safframework.kotlin.coroutines.asyncOnUI
 import com.safframework.lifecycle.extension.bindWithLifecycle
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 
 /**
  *

@@ -2,7 +2,6 @@ package com.safframework.lifecycle.extension
 
 import android.os.Build
 import android.view.View
-import com.safframework.lifecycle.UI
 import kotlinx.coroutines.*
 
 /**

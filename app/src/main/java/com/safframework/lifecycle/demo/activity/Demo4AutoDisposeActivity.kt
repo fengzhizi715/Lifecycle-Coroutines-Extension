@@ -2,7 +2,7 @@ package com.safframework.lifecycle.demo.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.safframework.lifecycle.defaultScope
+import com.safframework.kotlin.coroutines.defaultScope
 import com.safframework.lifecycle.demo.R
 import com.safframework.lifecycle.demo.utils.ping
 import com.safframework.lifecycle.extension.autoDispose

@@ -1,8 +1,8 @@
 package com.safframework.lifecycle.extension
 
 import android.view.View
-import com.safframework.lifecycle.SafeCoroutineScope
-import com.safframework.lifecycle.UI
+import com.safframework.kotlin.coroutines.SafeCoroutineScope
+import com.safframework.kotlin.coroutines.UI
 import kotlinx.coroutines.*
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.ContinuationInterceptor
