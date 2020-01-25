@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.safframework.kotlin.coroutines.IO
+import com.safframework.kotlin.coroutines.extension.then
+import com.safframework.kotlin.coroutines.extension.thenAsync
 import com.safframework.lifecycle.extension.asyncWithLifecycle
-import com.safframework.lifecycle.extension.then
-import com.safframework.lifecycle.extension.thenAsync
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 

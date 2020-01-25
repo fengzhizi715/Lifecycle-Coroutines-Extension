@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.safframework.kotlin.coroutines.IO
 import com.safframework.kotlin.coroutines.UI
+import com.safframework.kotlin.coroutines.extension.awaitOrNull
 import com.safframework.lifecycle.extension.asyncWithLifecycle
-import com.safframework.lifecycle.extension.awaitOrNull
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 
