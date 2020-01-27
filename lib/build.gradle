@@ -40,7 +40,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.kotlinx_coroutines_core}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.kotlinx_coroutines_core}"
 
-    implementation 'com.safframework.kotlin.coroutines:coroutines-utils:1.0.2'
+    implementation 'com.safframework.kotlin.coroutines:coroutines-utils:1.0.4'
 }
 
 repositories {
