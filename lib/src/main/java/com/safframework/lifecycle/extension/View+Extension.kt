@@ -5,6 +5,7 @@ import android.content.ContextWrapper
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import com.safframework.kotlin.coroutines.SafeCoroutineScope
 import com.safframework.kotlin.coroutines.UI
 import kotlinx.coroutines.*
@@ -24,6 +25,9 @@ import kotlin.coroutines.CoroutineContext
 // 获取 View 的 lifecycleOwner
 val View.lifecycleOwner: LifecycleOwner
     get() = retrieveLifecycleOwner(context)
+
+val View.lifecycleScope
+    get() = lifecycleOwner.lifecycleScope
 
 // 在 Android View 中使用的 Job，能够在 View 的生命周期内自动 Disposable
 fun View.autoDispose(job: Job) {
