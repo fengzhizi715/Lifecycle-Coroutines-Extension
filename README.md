@@ -14,6 +14,8 @@ implementation 'com.safframework.lifecycle:lifecycle-coroutine-ext:1.1.2'
 
 稍后带来更详细的介绍
 
+底层使用 https://github.com/fengzhizi715/Kotlin-Coroutines-Utils
+
 
 # 联系方式:
 
