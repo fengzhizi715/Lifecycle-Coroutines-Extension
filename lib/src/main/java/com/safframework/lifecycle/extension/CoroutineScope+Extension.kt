@@ -1,6 +1,7 @@
 package com.safframework.lifecycle.extension
 
 import androidx.lifecycle.LifecycleOwner
+import com.safframework.kotlin.coroutines.uiScope
 import com.safframework.lifecycle.listener.LifecycleCoroutineListener
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -19,7 +20,7 @@ fun <T> CoroutineScope.asyncWithLifecycle(lifecycleOwner: LifecycleOwner,
                                        start: CoroutineStart = CoroutineStart.DEFAULT,
                                        block: suspend CoroutineScope.() -> T): Deferred<T> {
 
-    val deferred = GlobalScope.async(context, start) {
+    val deferred = uiScope().async(context, start) {
 
         block()
     }
