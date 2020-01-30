@@ -1,6 +1,10 @@
 package com.safframework.lifecycle.extension
 
+import android.content.Context
+import android.content.ContextWrapper
 import android.view.View
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.safframework.kotlin.coroutines.SafeCoroutineScope
 import com.safframework.kotlin.coroutines.UI
 import kotlinx.coroutines.*
@@ -16,6 +20,17 @@ import kotlin.coroutines.CoroutineContext
  * @date: 2019-10-10 13:16
  * @version: V1.0 <描述当前版本功能>
  */
+
+val View.lifecycleOwner: LifecycleOwner
+    get() = retrieveLifecycleOwner(context)
+
+private fun retrieveLifecycleOwner(context: Context): LifecycleOwner {
+    return when (context) {
+        is LifecycleOwner -> context
+        is ContextWrapper -> retrieveLifecycleOwner(context.baseContext)
+        else -> ProcessLifecycleOwner.get()
+    }
+}
 
 // 在 Android View 中使用的 Job，能够在 View 的生命周期内自动 Disposable
 fun View.autoDispose(job: Job) {
