@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.safframework.kotlin.coroutines.UI
-import com.safframework.kotlin.coroutines.listener.CoroutineErrorListener
 import com.safframework.kotlin.coroutines.uiScope
 import com.safframework.lifecycle.demo.R
 import kotlinx.android.synthetic.main.activity_handle_exception.*
@@ -54,14 +53,10 @@ class Demo4HandleExceptionActivity: AppCompatActivity() {
 
         text3.setOnClickListener {
 
-            val errorHandle = object : CoroutineErrorListener {
-                override fun onError(throwable: Throwable) {
+            uiScope {
 
-                    Log.e("errorHandle",throwable.localizedMessage)
-                }
-            }
-
-            uiScope(errorHandle).launch {
+                Log.e("errorHandle",it.localizedMessage)
+            }.launch {
 
                 Toast.makeText(mContext,"handle the exception", Toast.LENGTH_SHORT).show()
 
