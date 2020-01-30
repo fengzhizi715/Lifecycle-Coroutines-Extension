@@ -21,16 +21,9 @@ import kotlin.coroutines.CoroutineContext
  * @version: V1.0 <描述当前版本功能>
  */
 
+// 获取 View 的 lifecycleOwner
 val View.lifecycleOwner: LifecycleOwner
     get() = retrieveLifecycleOwner(context)
-
-private fun retrieveLifecycleOwner(context: Context): LifecycleOwner {
-    return when (context) {
-        is LifecycleOwner -> context
-        is ContextWrapper -> retrieveLifecycleOwner(context.baseContext)
-        else -> ProcessLifecycleOwner.get()
-    }
-}
 
 // 在 Android View 中使用的 Job，能够在 View 的生命周期内自动 Disposable
 fun View.autoDispose(job: Job) {
@@ -44,6 +37,14 @@ val View.autoDisposeScope: CoroutineScope
     get() {
         return SafeCoroutineScope(UI + ViewAutoDisposeInterceptorImpl(this))
     }
+
+private fun retrieveLifecycleOwner(context: Context): LifecycleOwner {
+    return when (context) {
+        is LifecycleOwner -> context
+        is ContextWrapper -> retrieveLifecycleOwner(context.baseContext)
+        else -> ProcessLifecycleOwner.get()
+    }
+}
 
 private class ViewListener(
         private val view: View,
