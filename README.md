@@ -6,6 +6,17 @@
 
 # 下载安装
 
+将它添加到项目的 root build.gradle 中：
+
+```groovy
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
 Gradle:
 ```groovy
 implementation 'com.github.fengzhizi715:Lifecycle-Coroutines-Extension:v1.2.0'
