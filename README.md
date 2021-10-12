@@ -2,13 +2,13 @@
 
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[ ![Download](https://api.bintray.com/packages/fengzhizi715/maven/lifecycle-coroutine-ext/images/download.svg) ](https://bintray.com/fengzhizi715/maven/lifecycle-coroutine-ext/_latestVersion)
+[![](https://jitpack.io/v/fengzhizi715/Lifecycle-Coroutines-Extension.svg)](https://jitpack.io/#fengzhizi715/Lifecycle-Coroutines-Extension)
 
 # 下载安装
 
 Gradle:
 ```groovy
-implementation 'com.safframework.lifecycle:lifecycle-coroutine-ext:1.1.3'
+implementation 'com.github.fengzhizi715:Lifecycle-Coroutines-Extension:v1.2.0'
 ```
 
 
