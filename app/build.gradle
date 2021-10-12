@@ -21,7 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
     packagingOptions {
         exclude 'META-INF/main.kotlin_module'
         exclude 'META-INF/proguard/coroutines.pro'
@@ -43,5 +46,6 @@ dependencies {
     implementation project(":lib")
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.kotlinx_coroutines_core}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.kotlinx_coroutines_core}"
-    implementation 'com.safframework.kotlin.coroutines:coroutines-utils:1.0.0'
+
+    implementation "com.github.fengzhizi715.Kotlin-Coroutines-Utils:common:${libs.kotlin_coroutines_utils}"
 }
